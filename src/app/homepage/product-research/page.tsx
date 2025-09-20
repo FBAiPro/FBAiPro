@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { PageLayout } from "@/components/layout/page-layout"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
+import { PageLayout } from "@/app/homepage/components/layout/page-layout"
+import { Button } from "@/app/homepage/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/app/homepage/components/ui/card"
+import { Input } from "@/app/homepage/components/ui/input"
+import { Badge } from "@/app/homepage/components/ui/badge"
 import { Search, TrendingUp, DollarSign, Users, Star, ArrowRight, Zap, Target, BarChart3 } from "lucide-react"
 import { motion } from "framer-motion"
 

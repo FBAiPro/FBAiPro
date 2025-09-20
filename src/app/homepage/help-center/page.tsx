@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { PageLayout } from "@/components/layout/page-layout"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { PageLayout } from "@/app/homepage/components/layout/page-layout"
+import { Card, CardContent, CardHeader, CardTitle } from "@/app/homepage/components/ui/card"
+import { Button } from "@/app/homepage/components/ui/button"
+import { Input } from "@/app/homepage/components/ui/input"
+import { Badge } from "@/app/homepage/components/ui/badge"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/app/homepage/components/ui/collapsible"
 import { Search, ChevronDown, BookOpen, MessageCircle, Video, FileText, Mail, Phone, Clock } from "lucide-react"
 import { motion } from "framer-motion"
 

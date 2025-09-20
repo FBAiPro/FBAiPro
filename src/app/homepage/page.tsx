@@ -1,7 +1,13 @@
-// Temporary wrapper to render the component you added under homepage/app/page.tsx
-// When ready, we can flatten the structure by moving files from homepage/app/* up one level.
-import HomepageInner from "./app/page";
+import { Header } from "@/app/homepage/components/layout/header";
+import { Footer } from "@/app/homepage/components/layout/footer";
+import SoftwareDevelopmentWebsite from "@/app/homepage/components/amazon-fba-ai-platform";
 
 export default function Homepage() {
-  return <HomepageInner />;
+  return (
+    <>
+      <Header />
+      <SoftwareDevelopmentWebsite />
+      <Footer />
+    </>
+  );
 }

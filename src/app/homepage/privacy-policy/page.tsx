@@ -1,5 +1,5 @@
-import { PageLayout } from "@/components/layout/page-layout"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { PageLayout } from "@/app/homepage/components/layout/page-layout"
+import { Card, CardContent, CardHeader, CardTitle } from "@/app/homepage/components/ui/card"
 import { Shield, Eye, Lock, Database, UserCheck, Mail } from "lucide-react"
 
 const sections = [

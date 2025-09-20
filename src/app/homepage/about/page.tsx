@@ -1,7 +1,7 @@
 "use client"
-import { PageLayout } from "@/components/layout/page-layout"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { PageLayout } from "@/app/homepage/components/layout/page-layout"
+import { Card, CardContent } from "@/app/homepage/components/ui/card"
+import { Badge } from "@/app/homepage/components/ui/badge"
 import { Users, Target, Zap, Award, TrendingUp, Globe } from "lucide-react"
 import { motion } from "framer-motion"
 

@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { PageLayout } from "@/components/layout/page-layout"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { PageLayout } from "@/app/homepage/components/layout/page-layout"
+import { Button } from "@/app/homepage/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/app/homepage/components/ui/card"
+import { Badge } from "@/app/homepage/components/ui/badge"
 import { BarChart3, TrendingUp, TrendingDown, Globe, Target, Zap } from "lucide-react"
 import { motion } from "framer-motion"
 
