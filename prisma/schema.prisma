@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int       @id @default(autoincrement())
+  email            String    @unique
+  passwordHash     String
+  subscriptionTier String    @default("free")
+  createdAt        DateTime  @default(now())
+  products         Product[]
+}
+
+model Product {
+  id               Int        @id @default(autoincrement())
+  user             User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId           Int
+  asin             String?    @unique
+  title            String
+  description      String?
+  price            Decimal?   @db.Decimal(10, 2)
+  profitScore      Int?
+  competitionScore Int?
+  demandScore      Int?
+  createdAt        DateTime   @default(now())
+  keywords         Keyword[]
+  analytics        Analytics[]
+}
+
+model Keyword {
+  id               Int      @id @default(autoincrement())
+  product          Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId        Int
+  keyword          String
+  searchVolume     Int?
+  competitionScore Int?
+  relevanceScore   Int?
+
+  @@index([productId])
+}
+
+model Analytics {
+  id        Int      @id @default(autoincrement())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId Int
+  date      DateTime
+  views     Int      @default(0)
+  clicks    Int      @default(0)
+  sales     Int      @default(0)
+  revenue   Decimal  @default(0) @db.Decimal(10, 2)
+
+  @@index([productId, date])
+}
