@@ -58,6 +58,44 @@ Open http://localhost:3000
   - POST `/api/ai/listing-optimize` – creates title/bullets/description
   - POST `/api/ai/competitor-analysis` – simple competition labels
 
+## Deploy to Cloud Run (Dockerfile)
+
+This repo includes a Dockerfile using Next.js standalone output.
+
+1) Build and push (replace YOUR_PROJECT and REGION):
+```
+$env:PROJECT_ID="YOUR_PROJECT"
+$env:REGION="us-central1"  # choose your region
+$image="gcr.io/$env:PROJECT_ID/fbai-pro:$(git rev-parse --short HEAD)"
+
+gcloud builds submit --tag $image
+```
+
+2) Deploy
+```
+# Set env via Secret Manager for security (recommended)
+# gcloud secrets create NEXTAUTH_SECRET --replication-policy="automatic"
+# echo -n "your-secret" | gcloud secrets versions add NEXTAUTH_SECRET --data-file=-
+
+# Deploy (pass non-secret env here, bind secrets separately if you use them)
+gcloud run deploy fbai-pro `
+  --image=$image `
+  --region=$env:REGION `
+  --platform=managed `
+  --allow-unauthenticated `
+  --port=8080 `
+  --set-env-vars=NEXTAUTH_URL=https://YOUR_SERVICE_URL
+
+# Example of binding secrets later (optional)
+# gcloud run services update fbai-pro --region=$env:REGION `
+#   --set-secrets NEXTAUTH_SECRET=NEXTAUTH_SECRET:latest
+```
+
+Notes:
+- Cloud Run containers are ephemeral. Don’t use SQLite in production. Point `DATABASE_URL` to a managed Postgres (Neon/Supabase/Cloud SQL) and update `prisma/schema.prisma` provider to `postgresql`.
+- Ensure `NEXTAUTH_URL` matches the Cloud Run URL after first deploy, then redeploy if needed.
+- If using custom domains, configure Cloud Run domain mapping.
+
 ## Next steps (suggested)
 - Hook Amazon SP-API once your Seller Central account is ready.
 - Replace AI stub logic with providers (Hugging Face Inference, OpenRouter, or your own hosted models) guarded by environment flags.
